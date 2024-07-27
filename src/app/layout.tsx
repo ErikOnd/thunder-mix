@@ -13,14 +13,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html
 			lang="en"
-			suppressHydrationWarning>
-			<head />
+			suppressHydrationWarning
+		>
+			<head>
+				<title>Thunder Mix</title>
+			</head>
 			<body className={cn("bg-background font-sans antialiased", fontSans.variable)}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="dark"
 					enableSystem
-					disableTransitionOnChange>
+					disableTransitionOnChange
+				>
 					{children}
 				</ThemeProvider>
 			</body>

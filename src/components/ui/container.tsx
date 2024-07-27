@@ -6,11 +6,7 @@ type ContainerProps = {
 };
 
 const Container = ({ className = "", children }: ContainerProps) => {
-	return (
-		<div className={`mx-auto px-4 sm:px-6 lg:px-8 ${className}`}>
-			<div className="space-y-4 sm:space-y-6 lg:space-y-8">{children}</div>
-		</div>
-	);
+	return <div className={`mx-auto flex flex-col gap-10 px-4 sm:px-6 lg:px-8 ${className}`}>{children}</div>;
 };
 
 export default Container;

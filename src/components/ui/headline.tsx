@@ -7,7 +7,33 @@ type HeadlineProps = {
 };
 
 const Headline = ({ as: Tag = "h1", className = "", children }: HeadlineProps) => {
-	return <Tag className={`text-3xl font-bold md:text-4xl lg:text-5xl ${className}`}>{children}</Tag>;
+	const baseClass = "font-bold";
+	let sizeClass = "";
+
+	switch (Tag) {
+		case "h1":
+			sizeClass = "text-6xl md:text-7xl lg:text-8xl";
+			break;
+		case "h2":
+			sizeClass = "text-4xl md:text-5xl lg:text-6xl";
+			break;
+		case "h3":
+			sizeClass = "text-2xl md:text-3xl lg:text-4xl";
+			break;
+		case "h4":
+			sizeClass = "text-xl md:text-2xl lg:text-3xl";
+			break;
+		case "h5":
+			sizeClass = "text-lg md:text-xl lg:text-2xl";
+			break;
+		case "h6":
+			sizeClass = "text-base md:text-lg lg:text-xl";
+			break;
+		default:
+			sizeClass = "text-2xl md:text-3xl lg:text-4xl";
+	}
+
+	return <Tag className={`${baseClass} ${sizeClass} ${className}`}>{children}</Tag>;
 };
 
 export default Headline;
