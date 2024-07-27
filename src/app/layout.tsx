@@ -3,13 +3,16 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import React from "react";
 import { ThemeProvider } from "@/components/theme-provider";
+import { getServerSession } from "next-auth";
+import SessionProvider from "@/components/SessionProvider";
 
 const fontSans = FontSans({
 	subsets: ["latin"],
 	variable: "--font-sans",
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+	const session = await getServerSession();
 	return (
 		<html
 			lang="en"
@@ -19,14 +22,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<title>Thunder Mix</title>
 			</head>
 			<body className={cn("bg-background font-sans antialiased", fontSans.variable)}>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="dark"
-					enableSystem
-					disableTransitionOnChange
-				>
-					{children}
-				</ThemeProvider>
+				<SessionProvider session={session}>
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="dark"
+						enableSystem
+						disableTransitionOnChange
+					>
+						{children}
+					</ThemeProvider>
+				</SessionProvider>
 			</body>
 		</html>
 	);
