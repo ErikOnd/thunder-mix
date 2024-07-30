@@ -5,7 +5,7 @@ import Container from "@/components/ui/container";
 import { Input } from "@/components/ui/input";
 import { useSession } from "next-auth/react";
 import getSongs from "@/app/api/getSongs";
-import Image from "next/image";
+import AlbumCard from "@/components/album-card";
 
 type SpotifyImage = {
 	url: string;
@@ -15,7 +15,7 @@ type SessionData = {
 	accessToken: string;
 };
 
-type Song = {
+export type Song = {
 	name: string;
 	uri: string;
 	album: {
@@ -79,19 +79,9 @@ const PlaylistCreator = () => {
 						return (
 							<div
 								key={index}
-								className="relative h-60 w-60"
+								className="relative h-60 w-60 rounded-xl overflow-hidden cursor-pointer hover:shining-border"
 							>
-								<Image
-									className="absolute"
-									src={song.album.images[0].url}
-									alt="song image"
-									width={240}
-									height={240}
-								/>
-								<div className="absolute bottom-0 flex h-20 w-full flex-col justify-end bg-black/70 pb-2 pl-2">
-									<p className="truncate text-xl font-black">{song.name}</p>
-									<p>{song.artists[0].name}</p>
-								</div>
+								<AlbumCard song={song} />
 							</div>
 						);
 					})}
