@@ -58,8 +58,6 @@ const PlaylistCreator = () => {
 		}
 	}
 
-	console.log(songs);
-
 	if (!session) return null;
 	return (
 		<>
