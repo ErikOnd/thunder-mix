@@ -1,4 +1,4 @@
-import { getSession } from "next-auth/react";
+import { refreshSpotifyAccessToken } from "@/app/api/auth/refreshSpotifyAccessToken";
 
 export default async function getSongs(accessToken: string, query: string) {
 	const endpoint = `https://api.spotify.com/v1/search?q=${query}&type=track&limit=12`;
@@ -9,14 +9,14 @@ export default async function getSongs(accessToken: string, query: string) {
 				"Content-Type": "application/json",
 			},
 		});
-
-
-		//todo:fix this part -> could cause infinity loop
 		if (response.status === 401) {
-			const session = await getSession();
-			return getSongs(session?.accessToken, query);
+			const newAccessToken = await refreshSpotifyAccessToken();
+			if (newAccessToken) {
+				return getSongs(newAccessToken, query);
+			}
+			console.error("Unable to retrieve access token from session after retries.");
+			return null;
 		}
-
 		const data = await response.json();
 
 		return data.tracks.items;
