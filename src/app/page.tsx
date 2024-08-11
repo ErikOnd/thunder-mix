@@ -24,7 +24,9 @@ export default function Home() {
 				<Text>Create playlists lightning fast for any occasion!</Text>
 				<AuthButton type="login" />
 			</Container>
-			<PlaylistCreator />
+			{/*<PlaylistCreator />*/}
 		</div>
 	);
 }
+
+//todo: Create my playlist button that gets conditionally render depending on if i have a session or not

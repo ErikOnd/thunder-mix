@@ -1,7 +1,7 @@
 import React from "react";
 
 const OccasionSelector = () => {
-	let musicOccasions = [
+	const musicOccasions = [
 		"Working Out",
 		"Partying",
 		"Waking Up",
@@ -15,7 +15,7 @@ const OccasionSelector = () => {
 		"Sleeping",
 	];
 
-	return <div></div>;
+	return <div>This is the occasion finder</div>;
 };
 
 export default OccasionSelector;

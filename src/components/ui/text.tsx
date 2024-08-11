@@ -19,7 +19,7 @@ const typeClasses = {
 }
 
 
-const Text: React.FC<TextProps> = ({ size = "medium", type="primary",  className = "", children }) => {
+const Text = ({ size = "medium", type="primary",  className = "", children }: TextProps) => {
 	return <p className={`${sizeClasses[size]} ${typeClasses[type]} ${className}`}>{children}</p>;
 };
 
