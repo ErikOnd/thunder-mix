@@ -77,7 +77,7 @@ const PlaylistCreator = () => {
 						return (
 							<div
 								key={index}
-								className="relative h-60 w-60 rounded-xl overflow-hidden cursor-pointer hover:shining-border"
+								className="hover:shining-border relative h-60 w-60 cursor-pointer overflow-hidden rounded-xl"
 							>
 								<AlbumCard song={song} />
 							</div>

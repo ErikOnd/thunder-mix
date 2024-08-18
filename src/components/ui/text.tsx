@@ -15,11 +15,10 @@ const sizeClasses = {
 
 const typeClasses = {
 	primary: "text-white",
-	secondary: "text-gray-300"
-}
+	secondary: "text-gray-300",
+};
 
-
-const Text = ({ size = "medium", type="primary",  className = "", children }: TextProps) => {
+const Text = ({ size = "medium", type = "primary", className = "", children }: TextProps) => {
 	return <p className={`${sizeClasses[size]} ${typeClasses[type]} ${className}`}>{children}</p>;
 };
 

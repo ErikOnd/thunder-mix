@@ -21,9 +21,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 				<title>Thunder Mix</title>
 			</head>
 			<body className={cn("bg-background font-sans antialiased", fontSans.variable)}>
-				<SessionProvider session={session}>
-						{children}
-				</SessionProvider>
+				<SessionProvider session={session}>{children}</SessionProvider>
 			</body>
 		</html>
 	);
