@@ -19,8 +19,8 @@ const AlbumCard = ({song}: AlbumCardProps) => {
           fill={true}
       />
       <div className="absolute bottom-0 flex w-full flex-col justify-end bg-black/80 p-2">
-        <Text className="truncate font-black group-hover:text-textHover">{song.name}</Text>
-        <Text size="small" type="secondary" className="truncate group-hover:text-textHover">{song.artists[0].name}</Text>
+        <Text className="truncate font-black group-hover:text-primary">{song.name}</Text>
+        <Text size="small" type="secondary" className="truncate group-hover:text-primary">{song.artists[0].name}</Text>
       </div>
     </div>
   );

@@ -1,17 +1,24 @@
+"use client";
+
 import Headline from "@/components/ui/headline";
 import Text from "@/components/ui/text";
 import Container from "@/components/ui/container";
-import { ThemeToggle } from "@/components/theme-toggle";
 import AuthButton from "@/components/ui/auth-button";
-import PlaylistCreator from "@/components/playlist-creator";
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
+	const router = useRouter();
+	const session = useSession();
+	console.log(session);
+
 	return (
 		<div className="relative">
 			<div className="absolute right-10 top-10">
 				<div className="flex gap-5">
 					<AuthButton type="logout" />
-					<ThemeToggle />
 				</div>
 			</div>
 			<Container className="h flex w-full max-w-5xl items-center justify-center text-center">
@@ -23,8 +30,15 @@ export default function Home() {
 				</Headline>
 				<Text>Create playlists lightning fast for any occasion!</Text>
 				<AuthButton type="login" />
+				{session.status === "authenticated" && (
+					<Button
+						type="button"
+						onClick={() => router.push("/occasion")}
+					>
+						Create your playlist
+					</Button>
+				)}
 			</Container>
-			{/*<PlaylistCreator />*/}
 		</div>
 	);
 }

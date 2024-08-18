@@ -15,7 +15,7 @@ const OccasionSelector = () => {
 		"Sleeping",
 	];
 
-	return <div>This is the occasion finder</div>;
+	return <div>This occasion page</div>;
 };
 
 export default OccasionSelector;
